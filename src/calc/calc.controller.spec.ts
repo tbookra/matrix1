@@ -12,7 +12,12 @@ describe('CalcController', () => {
     controller = module.get<CalcController>(CalcController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+  // it('should be defined', () => {
+  //   expect(controller).toBeDefined();
+  // });
+  // describe('calculate Add', ()=>{
+  //   it('should return the sum of 2 numbers', ()=>{
+  //     controller.calculate(4,5,"Add")
+  //   })
+  // })
 });

@@ -15,4 +15,14 @@ describe('CalcService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+  describe('calculate Add', () => {
+    it('should return the sum of 2 numbers provided', () => {
+      const result = service.calculateIt({
+        num1: 4,
+        num2: 5,
+        operation: 'Add',
+      });
+      expect(result).toStrictEqual(9);
+    });
+  });
 });
