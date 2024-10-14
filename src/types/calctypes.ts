@@ -1,0 +1,1 @@
+export type Operations = 'Add' | 'Deduct' | 'Multiply' | 'Divide'
