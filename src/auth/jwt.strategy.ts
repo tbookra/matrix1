@@ -8,13 +8,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false, // This ensures tokens are checked for expiration
-      secretOrKey: '12345678', // Same secret key used for signing
+      secretOrKey: process.env.JWT_KEY,
     });
   }
 
   async validate(payload: any) {
-    console.log('payload', payload);
-
     return {
       sub: payload.sub,
       username: payload.username,

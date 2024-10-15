@@ -20,7 +20,6 @@ export class AuthService {
     };
   }
   decodeToken(token: string) {
-    console.log('token', token);
 
     try {
       const decoded = this.jwtService.decode(token);

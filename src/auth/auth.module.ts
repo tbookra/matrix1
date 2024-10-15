@@ -9,7 +9,7 @@ import { AuthController } from './auth.controller';
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: '12345678', // in real life would be kept in .env file.
+      secret: process.env.JWT_KEY
     }),
   ],
   providers: [AuthService, JwtStrategy],

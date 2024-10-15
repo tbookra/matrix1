@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: calculator
+  description: "This is a simple calculator. for operations of Add, Deduct, Multiply or Divide."
+  version: 1.0.01
+  host: "localhost:5001"
+  schemas:
+  - "http"
+paths:
+  /calculate:
+    post:
+      summary: Accepts two numbers and returns a result.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                num1:
+                  type: number
+                  description: First number
+                  example: 5
+                num2:
+                  type: number
+                  description: Second number
+                  example: 6
+              required:
+                - num1
+                - num2
+      parameters:
+        - in: header
+          name: operation
+          schema:
+            type: string
+            enum: 
+            - Add
+            - Deduct
+            - Multiply
+            - Divide
+          required: true
+          description: A custom string header
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: number
+                    description: The result of the operation
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

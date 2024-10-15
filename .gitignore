@@ -13,7 +13,8 @@ lerna-debug.log*
 
 # OS
 .DS_Store
-
+# in real life it would be the right .env file
+.env111
 # Tests
 /coverage
 /.nyc_output

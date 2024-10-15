@@ -6,9 +6,8 @@ import {
   Headers,
   UsePipes,
   ValidationPipe,
-  Req,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { CalcService } from './calc.service';
 import { CalculateArgsDto } from './dtos/CalculateArgs.dto';
 import { Operations } from 'src/types/calctypes';
@@ -30,9 +29,11 @@ export class CalcController {
   ) {
     const token = bearer.split(' ')[1];
     const userDetails = this.authService.decodeToken(token);
-
-    const result = this.calcService.calculateIt({ ...args, operation });
-
-    res.send({ result, userDetails });
+    if (userDetails?.authorized?.includes('admin')) {
+      const result = this.calcService.calculateIt({ ...args, operation });
+      res.send({ result, userDetails });
+    } else {
+      res.send('not authorized');
+    }
   }
 }
